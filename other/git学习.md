@@ -18,7 +18,7 @@
 - git reset 撤销回退版本
 
 ## 远程仓库-本地仓库-暂存区-工作区三者关系图
-![远程仓库-本地仓库-暂存区-工作区三者关系图](https://github.com/fightcrap/javaStudy/blob/master/image/git-1-relation.png)
+![远程仓库-本地仓库-暂存区-工作区三者关系图](https://raw.githubusercontent.com/fightcrap/javaStudy/master/image/git-1-relation.png)
 
 ### 详细指令介绍
 - 代码库相关操作
@@ -75,8 +75,21 @@
 #### 问题1：如果提交本地项目到Github/其他远程仓库?
 > 首先进入GitHub,创建一个远程仓库 **如果已有忽略下步**
 >
-> ![创建远程仓库](https://github.com/fightcrap/javaStudy/blob/master/image/git-2-create-responstory.png)
+> ![创建远程仓库](https://raw.githubusercontent.com/fightcrap/javaStudy/master/image/git-2-create-responstory.png)
 >
 >然后获取对应的url
 >
->![获取url](https://github.com/fightcrap/javaStudy/blob/master/image/git-3-get-url.png)
+>![获取url](https://raw.githubusercontent.com/fightcrap/javaStudy/master/image/git-3-get-url.png)
+>
+>进入本地项目目录,并初始化
+>
+>![初始化](https://raw.githubusercontent.com/fightcrap/javaStudy/master/image/git-4-into-project.png)
+>关联远程仓库
+>
+>![g关联远程仓库](https://raw.githubusercontent.com/fightcrap/javaStudy/master/image/git-5-git-related.png)
+>拉取远程代码
+>![pull代码](https://raw.githubusercontent.com/fightcrap/javaStudy/master/image/git-6-git-pull.png)
+>上传代码
+>![push代码](https://raw.githubusercontent.com/fightcrap/javaStudy/master/image/git-7-git-push.png)
+>
+>**ps:在pull哪一步有时候会出现一个错误：refusing to merge unrelated histories git pull 这个错误只要在git pull命令加一个 --allow-unrelated-histories 就可以了完整的命令：git pull --allow-unrelated-histories**
