@@ -40,7 +40,7 @@ public class UnsafeSingleton {
     }
 }
 ```
-[代码链接]()
+[代码链接]https://github.com/fightcrap/javaStudy/blob/master/design/src/main/java/com/pangxie/server/singleton/UnsafeSingleton.java)
 > 代码解析：这是一个不安全的单例模式，属于懒加载模式的单例。为嘛说这个是不安全的呢？在多线程环境中，线程A来调用getInstance方法，发现没有实例化，则会进入判断括号体中，进行初始化，我们知道，对象实例化的时候,会出现重排序问题，会先分配空间，但是没有赋值，则这个时候线程B进来，发现已经不会为null了，就返回了，所以线程B会出现空指针异常（这是一种情况）；（情况二：）A刚刚进入判断体，线程B也刚刚进来，则会B也进入了判断体，就有两个线程进行实例化的问题。所以这是一个不安全的单例
 > 安全的单例写法:
 ```
@@ -68,7 +68,7 @@ public class SafeSingleton {
     }
 }
 ```
-[代码链接]()
+[代码链接](https://github.com/fightcrap/javaStudy/blob/master/design/src/main/java/com/pangxie/server/singleton/SafeSingleton.java)
 ## 多形式的单例模式
 -   
     ```
