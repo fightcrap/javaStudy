@@ -70,7 +70,7 @@ public class SafeSingleton {
 ```
 [代码链接](https://github.com/fightcrap/javaStudy/blob/master/design/src/main/java/com/pangxie/server/singleton/SafeSingleton.java)
 ## 多形式的单例模式
--   [饿汉式]()
+-   [饿汉式](https://github.com/fightcrap/javaStudy/blob/master/design/src/main/java/com/pangxie/server/singleton/HungrySingleton.java)
     ```
     public class HungrySingleton {
 
@@ -114,7 +114,7 @@ public class SafeSingleton {
         }
     }
     ```
-- [懒汉模式(线程安全版)]()
+- [懒汉模式(线程安全版)](https://github.com/fightcrap/javaStudy/blob/master/design/src/main/java/com/pangxie/server/singleton/SafeLazySingleton.java)
     ```
     public class SafeLazySingleton {
         private static SafeLazySingleton safeLazySingleton;
@@ -156,7 +156,7 @@ public class SafeSingleton {
         }
     }
     ```
-- [静态内部类单例模式]()
+- [静态内部类单例模式](https://github.com/fightcrap/javaStudy/blob/master/design/src/main/java/com/pangxie/server/singleton/SingletonDesign.java)
     ```
     public class SingletonDesign {
 
@@ -177,7 +177,7 @@ public class SafeSingleton {
         }
     }
     ```
-- [枚举单例]()
+- [枚举单例](https://github.com/fightcrap/javaStudy/blob/master/design/src/main/java/com/pangxie/server/singleton/Singleton.java)
     ```
     public enum Singleton {
         SINGLETON;
