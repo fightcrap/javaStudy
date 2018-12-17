@@ -10,6 +10,7 @@
   <version>1.0-SNAPSHOT</version>
   <modules>
     <module>basic-knowledge</module>
+    <module>design</module>
   </modules>
 
   <name>study-java</name>
