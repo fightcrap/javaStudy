@@ -70,8 +70,116 @@ public class SafeSingleton {
 ```
 [代码链接](https://github.com/fightcrap/javaStudy/blob/master/design/src/main/java/com/pangxie/server/singleton/SafeSingleton.java)
 ## 多形式的单例模式
--   
+-   [饿汉式]()
     ```
+    public class HungrySingleton {
 
+        private static HungrySingleton hungrySingleton=new HungrySingleton();
+
+        private HungrySingleton(){
+
+        }
+
+        /**
+        * 饿汉模式会优先初始化对象。所以是线程安全的
+        * @return
+        */
+        public static  HungrySingleton getInstance(){
+            if(hungrySingleton==null){
+                hungrySingleton=new HungrySingleton();
+            }
+
+            return hungrySingleton;
+        }
+    }
     ```
-- 
+- [懒汉模式](https://github.com/fightcrap/javaStudy/blob/master/design/src/main/java/com/pangxie/server/singleton/UnsafeSingleton.java)
+    ```
+    public class UnsafeSingleton {
+
+        private static UnsafeSingleton unsafeSingleton;
+
+        /**
+        * 私有构造器，限制外部不能实例
+        */
+        private UnsafeSingleton() {
+
+        }
+
+        public static UnsafeSingleton getInstance() {
+            if (unsafeSingleton == null) {
+                unsafeSingleton = new UnsafeSingleton();
+            }
+            return unsafeSingleton;
+        }
+    }
+    ```
+- [懒汉模式(线程安全版)]()
+    ```
+    public class SafeLazySingleton {
+        private static SafeLazySingleton safeLazySingleton;
+
+        private SafeLazySingleton(){
+
+        }
+
+        /**
+        * 利用synchronized 锁定类对象，锁的力度更大，使得锁的限制在调用前。确保逻辑走完，所以线程安全
+        * @return
+        */
+        public static synchronized SafeLazySingleton getInstance(){
+            if(safeLazySingleton==null){
+                safeLazySingleton=new SafeLazySingleton();
+            }
+            return safeLazySingleton;
+        }
+    }
+    ```
+- [懒汉模式（双重锁判断）](https://github.com/fightcrap/javaStudy/blob/master/design/src/main/java/com/pangxie/server/singleton/UnsafeSingleton.java)
+    ```
+    public class UnsafeSingleton {
+
+        private static UnsafeSingleton unsafeSingleton;
+
+        /**
+        * 私有构造器，限制外部不能实例
+        */
+        private UnsafeSingleton() {
+
+        }
+
+        public static UnsafeSingleton getInstance() {
+            if (unsafeSingleton == null) {
+             unsafeSingleton = new UnsafeSingleton();
+            }
+            return unsafeSingleton;
+        }
+    }
+    ```
+- [静态内部类单例模式]()
+    ```
+    public class SingletonDesign {
+
+
+        /**
+        * 利用静态内部类加载的形式，限制外部访问，并且初始化本身,达到单例的目的
+        */
+        private static class Singleton{
+            public static final   SingletonDesign singletonDesign=new SingletonDesign();
+        }
+
+        private SingletonDesign(){
+
+        }
+
+        public static SingletonDesign getInstance(){
+            return Singleton.singletonDesign;
+        }
+    }
+    ```
+- [枚举单例]()
+    ```
+    public enum Singleton {
+        SINGLETON;
+    }
+    ```
