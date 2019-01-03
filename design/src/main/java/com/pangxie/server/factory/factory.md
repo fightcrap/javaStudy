@@ -42,7 +42,7 @@ abstract String buildName(Class<? extends SurnameInterface> clas) throws Illegal
         return str;
     }
 ```
-[代码链接]()
+[代码链接](https://github.com/fightcrap/javaStudy/blob/master/design/src/main/java/com/pangxie/server/factory/AbsrractFactory.java)
 
 工厂实现类：
 ```
@@ -55,7 +55,7 @@ abstract String buildName(Class<? extends SurnameInterface> clas) throws Illegal
         return name;
     }
 ```
-[代码链接]()
+[代码链接](https://github.com/fightcrap/javaStudy/blob/master/design/src/main/java/com/pangxie/server/factory/NameFactiry.java)
 
 生产类接口：
 ```
@@ -64,7 +64,7 @@ public interface SurnameInterface {
     String getSurname();
 }
 ```
-[代码链接]()
+[代码链接](https://github.com/fightcrap/javaStudy/blob/master/design/src/main/java/com/pangxie/server/factory/surname/SurnameInterface.java)
 
 生产类实现：
 ```
@@ -85,7 +85,7 @@ public class ZhengSurname implements SurnameInterface {
     }
 }
 ```
-[代码链接]()
+[代码链接](https://github.com/fightcrap/javaStudy/blob/master/design/src/main/java/com/pangxie/server/factory/surname/ZhaoSurname.java)
 
 Main：
 ```
@@ -95,10 +95,11 @@ Main：
         absrractFactory.buildName(ZhaoSurname.class);
     }
 ```
-[代码链接]()
+[代码链接](https://github.com/fightcrap/javaStudy/blob/master/design/src/main/java/com/pangxie/server/factory/Main.java)
 
 这样我们需要新增一个姓，只需要构建一个生产类，就可以不动原代码结构，做到我们想要做的事情
 
 ## 工厂模式代码UML类图
 
-
+![工厂模式uml类图](https://raw.githubusercontent.com/fightcrap/javaStudy/master/image/faactory-uml.png)
+图片转载至：https://blog.csdn.net/shzm0/article/details/78886557
