@@ -18,11 +18,11 @@ import com.pangxie.server.dubbo.spi.api.SayWord;
  * |  (((__) (__)))    程序镇压神兽，排查一切bug。
  * |
  * |
- * | SayChanessWord
+ * | SayChineseWord
  * |
  * | @author fightingcrap
  **/
-public class SayChanessWord implements SayWord {
+public class SayChineseWord implements SayWord {
     @Override
     public String saySomething() {
         return "你好啊";
