@@ -1,2 +1,2 @@
-com.pangxie.server.dubbo.spi.impl.SayChanessWord
+com.pangxie.server.dubbo.spi.impl.SayChineseWord
 com.pangxie.server.dubbo.spi.impl.SayEnglishWord
