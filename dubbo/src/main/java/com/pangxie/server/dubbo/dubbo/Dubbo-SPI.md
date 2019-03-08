@@ -14,7 +14,7 @@
 
 ### Dubbo 的 SPI 核心文件目录
 
-![dubbo-spi文件目录]()
+![dubbo-spi文件目录](https://raw.githubusercontent.com/fightcrap/javaStudy/master/image/spi/dubbo/dubbo.spi.struct.png)
 没错就只有那么一点，是不是觉得很神奇。具体介绍内容前，先介绍下文件作用
 
 #### 注解部分
@@ -39,7 +39,7 @@
 
    value 的作用是标记 spi 扩展所需要的对应类的。和上篇 javaSpi 作用其实是一样的，只不过 dubbo 弄了个标示可以选择不同的值，以 xxx=xxxx 的形式选择
 
-   e.g:![dubbo-spi文件目录]()
+   e.g:![dubbo-spi文件目录](https://raw.githubusercontent.com/fightcrap/javaStudy/master/image/spi/dubbo/dubbo.spi.resources.png)
 
 2. @Adaptive
 
@@ -548,7 +548,7 @@ public class SayWord$Adpative implements com.pangxie.server.dubbo.dubbo.spi.api.
 
 测试代码如下
 
-接口：
+[接口](https://github.com/fightcrap/javaStudy/blob/master/dubbo/src/main/java/com/pangxie/server/dubbo/dubbo/spi/api/SayWord.java)：
 ```
 @SPI
 public interface SayWord {
@@ -557,7 +557,7 @@ public interface SayWord {
     String saySomething(String message,URL url);
 }
 ```
-实现：
+[实现1](https://github.com/fightcrap/javaStudy/blob/master/dubbo/src/main/java/com/pangxie/server/dubbo/dubbo/spi/impl/SayChineseWord.java)：
 ```
 public class SayChineseWord implements SayWord {
     @Override
@@ -566,6 +566,7 @@ public class SayChineseWord implements SayWord {
     }
 }
 ```
+[实现2](https://github.com/fightcrap/javaStudy/blob/master/dubbo/src/main/java/com/pangxie/server/dubbo/dubbo/spi/impl/SayEnglishWord.java)：
 ```
 public class SayEnglishWord implements SayWord {
     @Override
@@ -575,13 +576,13 @@ public class SayEnglishWord implements SayWord {
 }
 
 ```
-配置文件:
+[配置文件](https://github.com/fightcrap/javaStudy/blob/master/dubbo/src/main/resources/META-INF/dubbo/internal/com.pangxie.server.dubbo.dubbo.spi.api.SayWord):
 ```
 cn=com.pangxie.server.dubbo.dubbo.spi.impl.SayChineseWord
 en=com.pangxie.server.dubbo.dubbo.spi.impl.SayEnglishWord
 ```
 
-运行入口：
+[运行入口](https://github.com/fightcrap/javaStudy/blob/master/dubbo/src/main/java/com/pangxie/server/dubbo/dubbo/spi/Main.java)：
 ```
 public class Main {
 
@@ -669,4 +670,4 @@ Process finished with exit code 0
 
 
 ## 总结
-该文章讲解了dubbo的SPI扩展机制的实现原理，最关键的是弄清楚dubbo跟jdk在实现SPI的思想上做了哪些改进和优化，解读dubbo SPI扩展机制最关键的是弄清楚@SPI、@Adaptive、@Activate三个注解的含义，大部分逻辑都被封装在ExtensionLoader类中。dubbo的spi学习下来让我感觉一点就是灵活性是在是太突出了，不仅仅是根据注解，也可以根据参数形式，利用创建中间包装类，使用装饰模式，来加强spi的灵活。根据上一节其实我们可以知道@Adaptive》URL》SPI默认值的顺序。
+该文章讲解了dubbo的SPI扩展机制的实现原理，最关键的是弄清楚dubbo跟jdk在实现SPI的思想上做了哪些改进和优化，解读dubbo SPI扩展机制最关键的是弄清楚@SPI、@Adaptive、@Activate三个注解的含义，大部分逻辑都被封装在ExtensionLoader类中。dubbo的spi学习下来让我感觉一点就是灵活性是在是太突出了，不仅仅是根据注解，也可以根据参数形式，利用创建中间包装类，使用装饰模式，来加强spi的灵活。根据上一节其实我们可以知道dubbo选择spi内容的顺序为 @Adaptive》URL》SPI默认值。
