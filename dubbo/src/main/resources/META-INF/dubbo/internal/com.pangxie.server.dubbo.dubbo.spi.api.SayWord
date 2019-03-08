@@ -1,0 +1,2 @@
+cn=com.pangxie.server.dubbo.dubbo.spi.impl.SayChineseWord
+en=com.pangxie.server.dubbo.dubbo.spi.impl.SayEnglishWord
