@@ -12,6 +12,7 @@
     <module>basic-knowledge</module>
     <module>design</module>
       <module>dubbo</module>
+      <module>kafka</module>
   </modules>
 
   <name>study-java</name>
