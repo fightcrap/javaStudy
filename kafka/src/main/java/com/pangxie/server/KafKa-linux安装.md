@@ -18,7 +18,7 @@
 
     解压完后可以看到kafka文件的目录
 
-    ![kafka文件目录](https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D220/sign=571122a7b07eca8016053ee5a1229712/8d5494eef01f3a29c8f5514a9925bc315c607c71.jpg)
+    ![kafka文件目录](https://raw.githubusercontent.com/fightcrap/javaStudy/master/image/kafka/install/dir.png)
     
     其中bin是命令集所在的文件，config是基本的一些配置，log是我自己配置的。。。不用管
 
