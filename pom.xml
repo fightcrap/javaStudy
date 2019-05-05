@@ -13,6 +13,7 @@
     <module>design</module>
       <module>dubbo</module>
       <module>kafka</module>
+      <module>leetcode</module>
   </modules>
 
   <name>study-java</name>
