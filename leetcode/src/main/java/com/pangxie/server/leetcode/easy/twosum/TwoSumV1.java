@@ -19,7 +19,7 @@ import java.util.Map;
  * |  (((__) (__)))    程序镇压神兽，排查一切bug。
  * |
  * |
- * | TwoSumV1
+ * | TwoSumV1  -- 两数合，对应leetcode第一题，测试结果看test里面的TwoSumTest
  * |
  * | @author fightingcrap
  **/
