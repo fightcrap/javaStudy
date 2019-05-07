@@ -16,7 +16,7 @@ package com.pangxie.server.leetcode.easy.reverseinteger;
  * |  (((__) (__)))    程序镇压神兽，排查一切bug。
  * |
  * |
- * | ReverseInteger
+ * | ReverseInteger  --翻转数字，对应leetcode第7题。测试见test文件
  * |
  * | @author fightingcrap
  **/
