@@ -27,10 +27,6 @@ import java.util.Map;
  **/
 public class TwoSumV2 {
 
-    public static void main(String[] args) {
-
-        twoSum(new int[]{3,2,4},6) ;
-    }
 
     public static int[] twoSum(int[] nums, int target) {
 
