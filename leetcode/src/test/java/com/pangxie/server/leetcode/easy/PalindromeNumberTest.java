@@ -29,11 +29,11 @@ public class PalindromeNumberTest {
 
     @Test
     public void test() {
-        PalindromeNumberV1 palindromeNumberV1=new PalindromeNumberV1();
+        PalindromeNumberV1 palindromeNumberV1 = new PalindromeNumberV1();
         Assert.assertTrue(palindromeNumberV1.isPalindrome(121));
         Assert.assertTrue(!palindromeNumberV1.isPalindrome(-3));
 
-        PalindromeNumberV2 palindromeNumberV2=new PalindromeNumberV2();
+        PalindromeNumberV2 palindromeNumberV2 = new PalindromeNumberV2();
         Assert.assertTrue(palindromeNumberV2.isPalindrome(121));
         Assert.assertTrue(!palindromeNumberV2.isPalindrome(-3));
     }

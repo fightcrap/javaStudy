@@ -35,7 +35,7 @@ public class ReverseIntegerV1 {
             isMinus = true;
         }
         //翻转,
-        StringBuilder stringBuilder = new StringBuilder(temp+"").reverse();
+        StringBuilder stringBuilder = new StringBuilder(temp + "").reverse();
         //除去前面的0
         int zoreCount = 0;
         for (int i = 0; i < stringBuilder.length(); i++) {
@@ -46,12 +46,12 @@ public class ReverseIntegerV1 {
 
             }
         }
-        if(zoreCount>0){
-            stringBuilder.delete(0,zoreCount);
+        if (zoreCount > 0) {
+            stringBuilder.delete(0, zoreCount);
         }
-        try{
-            return Integer.valueOf(isMinus?"-"+stringBuilder.toString():stringBuilder.toString());
-        }catch (Exception e){
+        try {
+            return Integer.valueOf(isMinus ? "-" + stringBuilder.toString() : stringBuilder.toString());
+        } catch (Exception e) {
             return 0;
         }
 

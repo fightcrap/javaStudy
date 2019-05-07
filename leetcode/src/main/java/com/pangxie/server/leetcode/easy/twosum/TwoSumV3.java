@@ -30,7 +30,7 @@ public class TwoSumV3 {
             int differ = target - nums[i];
             Integer result = map.get(differ);
             if (null != result) {
-                return new int[]{result,i };
+                return new int[]{result, i};
             }
             map.put(nums[i], i);
         }
