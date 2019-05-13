@@ -20,7 +20,7 @@ import java.util.Set;
  * |  (((__) (__)))    程序镇压神兽，排查一切bug。
  * |
  * |
- * | RemoveDuplicatesFromSortedArrayV2
+ * | RemoveDuplicatesFromSortedArrayV1  -- 第26题 Remove Duplicates From Sorted Array
  * |
  * | @author fightingcrap
  **/

@@ -16,7 +16,7 @@ package com.pangxie.server.leetcode.easy.removeelement;
  * |  (((__) (__)))    程序镇压神兽，排查一切bug。
  * |
  * |
- * | RemoveElementV1
+ * | RemoveElementV1 -- 第27题 Remove Element
  * |
  * | @author fightingcrap
  **/
