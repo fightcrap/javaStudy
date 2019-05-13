@@ -31,10 +31,10 @@ Explanation: There is no common prefix among the input strings.
 > 编写一个函数来查找字符串数组中最长的公共前缀字符串。  
 > 如果没有公共前缀，返回一个空字符串“”。  
 > 示例1:  
-> 输入:[“花”、“流”、“飞行”)  
+> 输入:[“flower”、“flow”、“flight”)  
 > 输出:“fl”  
 > 示例2:  
-> 输入:“狗”,“赛车”,“车”)  
+> 输入:“dog”,“racecar”,“car”)  
 > 输出:”“  
 > 说明:输入字符串之间没有公共前缀。  
 > 注意:  
