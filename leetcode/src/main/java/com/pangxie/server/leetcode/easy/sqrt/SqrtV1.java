@@ -21,7 +21,7 @@ package com.pangxie.server.leetcode.easy.sqrt;
  * | @author fightingcrap
  **/
 public class SqrtV1 {
-    public static int mySqrt(int x) {
+    public  int mySqrt(int x) {
 
         if (x <= 0) {
             return 0;
@@ -40,9 +40,6 @@ public class SqrtV1 {
 
     }
 
-    public static void main(String[] args) {
-        System.out.println(mySqrt(Integer.MAX_VALUE));
-    }
 
 
 }
