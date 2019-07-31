@@ -146,6 +146,7 @@ public class SelectorServerThread implements Runnable {
         //写入也是要用缓存区
         ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
         byteBuffer.put(bytes);
+        byteBuffer.flip();
         socketChannel.write(byteBuffer);
     }
 }
