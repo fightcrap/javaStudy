@@ -1,4 +1,4 @@
-package com.pangxie.server.bio.constant;
+package com.pangxie.server.constant;
 
 /**
  * Create By fightingcrap On 2019/07/29

@@ -1,6 +1,6 @@
 package com.pangxie.server.bio.server;
 
-import com.pangxie.server.bio.constant.Constants;
+import com.pangxie.server.constant.Constants;
 import com.pangxie.server.bio.thread.TimeServerHandler;
 
 import java.io.IOException;

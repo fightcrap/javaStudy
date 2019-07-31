@@ -1,6 +1,6 @@
 package com.pangxie.server.bio.client;
 
-import com.pangxie.server.bio.constant.Constants;
+import com.pangxie.server.constant.Constants;
 
 import java.io.BufferedReader;
 import java.io.IOException;
