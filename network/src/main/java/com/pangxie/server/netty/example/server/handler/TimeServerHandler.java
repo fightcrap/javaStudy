@@ -29,17 +29,17 @@ public class TimeServerHandler extends ChannelHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         //构建缓存区
-        ByteBuf byteBuf = (ByteBuf) msg;
-        //读取字节
-        byte[] bytes = new byte[byteBuf.readableBytes()];
-        byteBuf.readBytes(bytes);
+//        ByteBuf byteBuf = (ByteBuf) msg;
+//        //读取字节
+//        byte[] bytes = new byte[byteBuf.readableBytes()];
+//        byteBuf.readBytes(bytes);
 
-        String content = new String(bytes, "utf-8");
+        String content = (String) msg;
         System.out.println("server get message :" + content);
         //读取成功后写会
         //构建写会缓冲区
-        ByteBuf res = Unpooled.copiedBuffer((System.currentTimeMillis() + "").getBytes());
-        ctx.write(res);
+        ByteBuf res = Unpooled.copiedBuffer((System.currentTimeMillis() + System.getProperty("line.separator")).getBytes());
+        ctx.writeAndFlush(res);
     }
 
     @Override
