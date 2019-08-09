@@ -35,9 +35,4 @@ public class ExeclSheetColumnTitleV1 {
         return stringBuilder.toString();
 
     }
-
-
-    public static void main(String[] args) {
-        System.out.println(convertToTitle(28));
-    }
 }
