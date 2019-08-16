@@ -6,13 +6,13 @@
 
     这边选择是目前最新版本2.2.0
     ```
-    wget 'https://www-eu.apache.org/dist/kafka/2.2.0/kafka-2.2.0-src.tgz '
+    wget 'http://mirror.bit.edu.cn/apache/kafka/2.3.0/kafka_2.11-2.3.0.tgz'
     ```
 2. 解压
 
     安装包下载完成后，解压安装包
     ```
-    tar -zxvf kafka-2.2.0-src.tgz
+    tar -zxvf kafka_2.11-2.3.0.tgz
     ```
 3. 启动
 
@@ -38,10 +38,15 @@
 4. 测试KafKa
 
     启动起来后就可以用控制台来进行测试了，首先当然是要创建Topic了(zookeeper的默认端口是2181，这边用了自带的就是localhsot了。如果是其他机器的就要修改啦)
+    查看topic
     ```
     bin/kafka-topics.sh --list --zookeeper localhost:2181
     ```
 
+    创建Topic
+    ```
+    bin/kafka-topics.sh --create --topic test  --replication-factor 1 --partitions 1 --zookeeper localhost:2181
+    ```
     启动生产者
     ```
     bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test
