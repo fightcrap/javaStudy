@@ -39,6 +39,7 @@ public class LoginAuthResHandler extends ChannelHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+        System.out.println("收到请求");
         NettyMessage nettyMessage = (NettyMessage) msg;
         NettyMessage respon = null;
         if (nettyMessage != null && nettyMessage.getHeader().getType() == (byte) 3) {

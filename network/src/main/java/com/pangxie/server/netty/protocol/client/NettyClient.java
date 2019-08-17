@@ -54,7 +54,7 @@ public class NettyClient {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
                             ch.pipeline().addLast(new NettyMessageDecoder(1024 * 1024, 4, 4))
-                                    .addLast("nettyMessage Encoder", new NettyMessageEncoder())
+                                    .addLast("nettyMessageEncoder", new NettyMessageEncoder())
                                     .addLast("readTimeOutHandler", new ReadTimeoutHandler(50))
                                     .addLast("loginAuth", new LoginAuthReqHandler())
                                     .addLast("heart", new HeartBeatReqHandler());

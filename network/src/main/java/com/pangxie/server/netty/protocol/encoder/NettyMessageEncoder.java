@@ -5,6 +5,7 @@ import com.pangxie.server.netty.protocol.entity.NettyMessage;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.MessageToByteEncoder;
 import io.netty.handler.codec.MessageToMessageEncoder;
 
 import java.io.IOException;
@@ -30,7 +31,7 @@ import java.util.List;
  * |
  * | @author fightingcrap
  **/
-public class NettyMessageEncoder extends MessageToMessageEncoder<NettyMessage> {
+public class NettyMessageEncoder extends MessageToByteEncoder<NettyMessage> {
 
     MarshallingEncoder marshallingEncoder;
 
@@ -43,36 +44,37 @@ public class NettyMessageEncoder extends MessageToMessageEncoder<NettyMessage> {
     }
 
     @Override
-    protected void encode(ChannelHandlerContext ctx, NettyMessage msg, List<Object> out) throws Exception {
+    protected void encode(ChannelHandlerContext ctx, NettyMessage msg, ByteBuf out) throws Exception {
 
         if (msg == null || msg.getHeader() == null) {
             throw new Exception("msg is null");
         }
-        ByteBuf byteBuf = Unpooled.buffer();
         NettyHeader nettyHeader = msg.getHeader();
-        byteBuf.writeInt(nettyHeader.getCrcCode());
-        byteBuf.writeInt(nettyHeader.getLength());
-        byteBuf.writeLong(nettyHeader.getSessionId());
-        byteBuf.writeByte(nettyHeader.getType());
-        byteBuf.writeByte(nettyHeader.getPriority());
-        byteBuf.writeInt(nettyHeader.getAttachment().size());
+        out.writeInt(nettyHeader.getCrcCode());
+        out.writeInt(nettyHeader.getLength());
+        out.writeLong(nettyHeader.getSessionId());
+        out.writeByte(nettyHeader.getType());
+        out.writeByte(nettyHeader.getPriority());
+        out.writeInt(nettyHeader.getAttachment().size());
 
 
         for (String key : nettyHeader.getAttachment().keySet()) {
             byte[] keyArray = key.getBytes("UTF-8");
 
             Object value = nettyHeader.getAttachment().get(key);
-            byteBuf.writeInt(keyArray.length);
-            byteBuf.writeBytes(keyArray);
-            marshallingEncoder.encode(value, byteBuf);
+            out.writeInt(keyArray.length);
+            out.writeBytes(keyArray);
+            marshallingEncoder.encode(value, out);
 
         }
 
         if (msg.getBody() != null) {
-            marshallingEncoder.encode(msg.getBody(), byteBuf);
+            marshallingEncoder.encode(msg.getBody(), out);
         } else {
-            byteBuf.writeInt(0);
-            byteBuf.setInt(4, byteBuf.readableBytes());
+            out.writeInt(0);
         }
+
+        out.setInt(4, out.readableBytes()-8);
+
     }
 }

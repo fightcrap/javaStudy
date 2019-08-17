@@ -41,18 +41,6 @@ public class NettyMessageDecoder extends LengthFieldBasedFrameDecoder {
     }
 
 
-    public NettyMessageDecoder(int maxFrameLength, int lengthFieldOffset, int lengthFieldLength, int lengthAdjustment, int initialBytesToStrip) {
-        super(maxFrameLength, lengthFieldOffset, lengthFieldLength, lengthAdjustment, initialBytesToStrip);
-    }
-
-    public NettyMessageDecoder(int maxFrameLength, int lengthFieldOffset, int lengthFieldLength, int lengthAdjustment, int initialBytesToStrip, boolean failFast) {
-        super(maxFrameLength, lengthFieldOffset, lengthFieldLength, lengthAdjustment, initialBytesToStrip, failFast);
-    }
-
-    public NettyMessageDecoder(ByteOrder byteOrder, int maxFrameLength, int lengthFieldOffset, int lengthFieldLength, int lengthAdjustment, int initialBytesToStrip, boolean failFast) {
-        super(byteOrder, maxFrameLength, lengthFieldOffset, lengthFieldLength, lengthAdjustment, initialBytesToStrip, failFast);
-    }
-
     @Override
     protected Object decode(ChannelHandlerContext ctx, ByteBuf in) throws Exception {
         ByteBuf byteBuf = (ByteBuf) super.decode(ctx, in);
@@ -62,26 +50,26 @@ public class NettyMessageDecoder extends LengthFieldBasedFrameDecoder {
 
         NettyMessage nettyMessage = new NettyMessage();
         NettyHeader nettyHeader = new NettyHeader();
-        nettyHeader.setCrcCode(in.readInt());
-        nettyHeader.setLength(in.readInt());
-        nettyHeader.setSessionId(in.readLong());
-        nettyHeader.setType(in.readByte());
-        nettyHeader.setPriority(in.readByte());
-        int size = in.readInt();
+        nettyHeader.setCrcCode(byteBuf.readInt());
+        nettyHeader.setLength(byteBuf.readInt());
+        nettyHeader.setSessionId(byteBuf.readLong());
+        nettyHeader.setType(byteBuf.readByte());
+        nettyHeader.setPriority(byteBuf.readByte());
+        int size = byteBuf.readInt();
         if (size > 0) {
             Map<String, Object> map = new HashMap<>(size);
             for (int i = 0; i < size; i++) {
-                int keySize = in.readInt();
+                int keySize = byteBuf.readInt();
                 byte[] keyArray = new byte[keySize];
-                in.readBytes(keyArray);
+                byteBuf.readBytes(keyArray);
                 String key = new String(keyArray, "UTF-8");
-                map.put(key, marshallingDecoder.decoder(in));
+                map.put(key, marshallingDecoder.decoder(byteBuf));
             }
             nettyHeader.setAttachment(map);
         }
 
-        if (in.readableBytes() > 4) {
-            nettyMessage.setBody(marshallingDecoder.decoder(in));
+        if (byteBuf.readableBytes() > 4) {
+            nettyMessage.setBody(marshallingDecoder.decoder(byteBuf));
         }
         nettyMessage.setHeader(nettyHeader);
         return nettyMessage;

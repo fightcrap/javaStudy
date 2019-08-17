@@ -6,6 +6,7 @@ import com.pangxie.server.netty.protocol.decoder.NettyMessageDecoder;
 import com.pangxie.server.netty.protocol.encoder.NettyMessageEncoder;
 import com.pangxie.server.netty.protocol.handler.HeartBeatResHandler;
 import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
@@ -45,7 +46,6 @@ public class NettyServer {
         serverBootstrap.group(group, worker)
                 .channel(NioServerSocketChannel.class)
                 .option(ChannelOption.SO_BACKLOG, 100)
-                .handler(new LoggingHandler(LogLevel.INFO))
                 .childHandler(new ChannelInitializer<SocketChannel>() {
                     @Override
                     protected void initChannel(SocketChannel ch) throws Exception {
@@ -56,7 +56,8 @@ public class NettyServer {
                                 .addLast("heartBeatResHandler", new HeartBeatResHandler());
                     }
                 });
-        serverBootstrap.bind(Constants.ADDRESS, Constants.PORT).sync();
+        ChannelFuture channelFuture = serverBootstrap.bind(Constants.PORT).sync();
+        channelFuture.channel().closeFuture().sync();
     }
 
     public static void main(String[] args) throws InterruptedException {
