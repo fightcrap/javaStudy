@@ -17,6 +17,7 @@
       <module>thred</module>
       <module>network</module>
       <module>jvm</module>
+      <module>cache</module>
   </modules>
 
   <name>study-java</name>
