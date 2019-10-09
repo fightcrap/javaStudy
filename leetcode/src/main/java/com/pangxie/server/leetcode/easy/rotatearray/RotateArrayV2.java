@@ -16,27 +16,29 @@ package com.pangxie.server.leetcode.easy.rotatearray;
  * |  (((__) (__)))    程序镇压神兽，排查一切bug。
  * |
  * |
- * | RotateArrayV1
+ * | RotateArrayV2
  * |
  * | @author fightingcrap
  **/
-public class RotateArrayV1 {
+public class RotateArrayV2 {
     public void rotate(int[] nums, int k) {
 
         if (k == 0 || nums.length <= 0) {
             return;
         }
         k = k % nums.length;
-        while (k > 0) {
-            int length=nums.length;
-            int temp = nums[length-1];
-            for (int i = nums.length-1; i >0; i--) {
-                nums[i] = nums[i-1];
-            }
-            nums[0] = temp;
-            k--;
-        }
+        rotate(nums, 0, nums.length - 1);
+        rotate(nums, 0, k - 1);
+        rotate(nums, k, nums.length - 1);
     }
 
-
+    private void rotate(int[] nums, int start, int end) {
+        while (start < end) {
+            nums[start] = nums[start] ^ nums[end];
+            nums[end] = nums[start] ^ nums[end];
+            nums[start] = nums[start] ^ nums[end];
+            start++;
+            end--;
+        }
+    }
 }
