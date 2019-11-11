@@ -67,8 +67,4 @@ public class StringToIntegerV1 {
 
 
     }
-
-    public static void main(String[] args) {
-        System.out.println(new StringToIntegerV1().myAtoi("-2147483647"));
-    }
 }
